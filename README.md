@@ -20,9 +20,8 @@ An intelligent Document-Based Q&A System that enables semantic search and questi
 
 ## Architecture
 
-```
-User → FastAPI → Document Processor → Embeddings → ChromaDB → RAG Pipeline → Ollama → Response
-```
+<img width="966" height="917" alt="image" src="https://github.com/user-attachments/assets/73ab31a6-619b-41bd-a8fe-6f5348a16f61" />
+<img width="980" height="351" alt="image" src="https://github.com/user-attachments/assets/1536a4f7-dcd2-46c5-a35d-b0990df513f8" />
 
 **Key Components:**
 1. **Document Processor**: Extracts text and creates semantic chunks
@@ -69,8 +68,6 @@ python -m venv venv
 ```bash
 pip install -r requirements.txt
 ```
-
-**Note:** If you encounter NumPy 2.0 compatibility errors, see [NUMPY_FIX.md](./NUMPY_FIX.md)
 
 ### 5. Verify Installation
 
@@ -255,86 +252,6 @@ E-Commerce Product Recommendation System/
 └── test_system.py
 ```
 
-## Design Decisions
-
-### ChromaDB vs Alternatives
-
-**Why ChromaDB?**
-- Local-first (no API keys required)
-- Persistent storage
-- Simple setup
-- Perfect for development and demos
-
-### Ollama vs Cloud APIs
-
-**Why Ollama?**
-- Privacy (runs locally)
-- Free (no API costs)
-- Fast local inference
-- Easy model switching
-
-### Chunking Strategy
-
-- **Chunk Size**: 500 characters
-- **Overlap**: 100 characters
-- **Strategy**: Sliding window
-
-This preserves context across chunk boundaries while maintaining optimal granularity for semantic search.
-
-### Embedding Model
-
-**all-MiniLM-L6-v2**
-- 384 dimensions
-- Fast inference (~400 sentences/sec)
-- Small model size (~80MB)
-- Excellent for e-commerce use cases
-
-## Configuration
-
-Environment variables can be configured in `.env` file:
-
-```env
-OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=llama3.2
-CHROMA_PERSIST_DIR=./chroma_db
-EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
-CHUNK_SIZE=500
-CHUNK_OVERLAP=100
-API_HOST=0.0.0.0
-API_PORT=8000
-```
-
-## Troubleshooting
-
-### NumPy Compatibility Error
-
-If you see: `AttributeError: np.float_ was removed in the NumPy 2.0 release`
-
-**Solution:**
-```bash
-pip install --force-reinstall numpy==1.26.4
-```
-
-See [NUMPY_FIX.md](./NUMPY_FIX.md) for details.
-
-### Ollama Connection Failed
-
-**Solution:**
-```bash
-# Start Ollama
-ollama serve
-
-# Pull the model
-ollama pull llama3.2
-```
-
-### Port Already in Use
-
-**Solution:**
-```bash
-uvicorn app.main:app --reload --port 8001
-```
-
 ## Assignment Requirements
 
 ✅ Python backend using FastAPI  
@@ -346,23 +263,5 @@ uvicorn app.main:app --reload --port 8001
 ✅ requirements.txt  
 ✅ Design decisions explained  
 
-## Future Enhancements
-
-- Support for `.docx` and `.html` files
-- Conversational memory for multi-turn dialogue
-- User authentication
-- Web UI
-- Analytics dashboard
-- docker Containerization
-
-## License
-
-This project is created as an assignment submission for educational purposes.
-
-## Author
-
-Developed as part of an AI/ML technical assessment.
-
----
 
 **Built with Python, FastAPI, ChromaDB, and Ollama**
