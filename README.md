@@ -21,7 +21,7 @@ An intelligent Document-Based Q&A System that enables semantic search and questi
 ## Architecture
 
 <img width="966" height="917" alt="image" src="https://github.com/user-attachments/assets/73ab31a6-619b-41bd-a8fe-6f5348a16f61" />
-<img width="980" height="351" alt="image" src="https://github.com/user-attachments/assets/1536a4f7-dcd2-46c5-a35d-b0990df513f8" />
+<img width="974" height="339" alt="image" src="https://github.com/user-attachments/assets/266d72e5-6124-46d5-913a-4fb924107b3d" />
 
 **Key Components:**
 1. **Document Processor**: Extracts text and creates semantic chunks
